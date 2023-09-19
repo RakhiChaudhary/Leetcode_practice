@@ -14,7 +14,7 @@ public:
         return maxi;
        */
 
-       int n=nums.size();
+      /* int n=nums.size();
        int maxsum=INT_MIN;
        int cursum=0;
        for(int i=0;i<n;i++)
@@ -24,7 +24,18 @@ public:
          if(cursum<0)
           cursum=0;
        }
-      return maxsum;
+      return maxsum;*/
+
+int n=nums.size();
+int sum=0;
+int maxs=INT_MIN;
+for(int i=0;i<n;i++){
+    sum=sum+nums[i];
+    maxs=max(sum,maxs);
+    if(sum<0)
+    sum=0;
+}
+return maxs;
     
     }
 };
@@ -54,3 +65,4 @@ sum      -2 0+1 -2 0+4  3 5 6  1 5
 maxi     -2   1  1   4  4 5 6  6 6
 
 */
+
