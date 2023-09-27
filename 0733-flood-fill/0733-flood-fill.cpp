@@ -1,9 +1,28 @@
 class Solution {
 public:
-    int dirx[4]={1,-1,0,0};
-    int diry[4]={0,0,1,-1};
+  /*  int dirx[4]={1,-1,0,0};
+    int diry[4]={0,0,1,-1};*/
+    void dfs(vector<vector<int>>& image, int sr, int sc, int newcolor,int prevcolor){
+           if(sr<0||sr>=image.size()||sc<0||sc>=image[0].size()){
+                    return;
+            }
+            if(image[sr][sc]==newcolor || image[sr][sc]!=prevcolor)
+            return;
+            image[sr][sc]=newcolor;
+            dfs(image,sr+1,sc,newcolor,prevcolor);
+            dfs(image,sr-1,sc,newcolor,prevcolor);
+            dfs(image,sr,sc+1,newcolor,prevcolor);
+            dfs(image,sr,sc-1,newcolor,prevcolor);
+
+    }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newcolor) {
         int prevcolor=image[sr][sc];
+        if(prevcolor==newcolor)
+        return image;
+        
+        dfs(image,sr,sc,newcolor,prevcolor);
+        return image;
+       /* int prevcolor=image[sr][sc];
         if(prevcolor==newcolor)
         return image;
         
@@ -30,6 +49,6 @@ public:
             }
         }
       return image;
-
+*/
     }
 };
